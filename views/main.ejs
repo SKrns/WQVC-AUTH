@@ -1,0 +1,358 @@
+<!doctype HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="custom/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue-deep_purple.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link href="custom/fonts/fontello/css/fontello.css" rel="stylesheet" />
+    <link href="fonts/fontello-53abb7b1/css/fontello.css" rel="stylesheet" />
+    <link rel="stylesheet" href="custom/css/bootstrap-offset-right.css">
+    <link rel="stylesheet" href="custom/css/style.css">
+    <link rel="stylesheet" href="css/inputTags.css">
+    <title>Quic-webRTC Video Conference</title>
+    <style>
+        .mdl-textfield__label {
+            margin-bottom: 0;
+            color: #d7dbdc;
+            font-weight: normal;
+        }
+        
+        .mdl-textfield--floating-label.is-focused .mdl-textfield__label,
+        .mdl-textfield--floating-label.is-dirty .mdl-textfield__label {
+            text-transform: uppercase
+        }
+        
+        .has-feedback label~.form-control-feedback {
+            top: 15px;
+        }
+        
+        .mdl-textfield {
+            width: 100%;
+        }
+        
+        .mdl-checkbox__label {
+            cursor: text;
+            font-size: 13px;
+            float: left;
+            color: #b0b3b4;
+            font-weight: normal;
+        }
+        
+        .mdl-checkbox__box-outline {
+            border: 1px solid #b0b3b4;
+        }
+        
+        .mdl-textfield__input {
+            border: none;
+            border-bottom: 1px solid rgba(0, 0, 0, .12);
+            display: block;
+            font-size: 16px;
+            margin: 0;
+            padding: 4px 0;
+            width: 100%;
+            background: 0 0;
+            text-align: left;
+            color: inherit;
+            font-weight: bold;
+        }
+        
+        .mdl-switch__label {
+            float: left;
+            font-weight: normal;
+            color: #b0b3b4;
+            font-size: 14px;
+        }
+        .card {
+            width: 18rem;
+            height:18rem;
+            /*width: 100%;*/
+            border-radius: 5px;
+            border: 0.5px solid #b2b2b2;
+            box-shadow: 0px 5px 15px #b2b2b2;
+            margin: 10px auto;
+        }
+        .mlt-content {
+            height: auto;
+            /*min-height: 566px;*/
+            position: relative;
+        }
+        .avatar {
+          vertical-align: middle;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+        }
+        .acount-body {
+            padding: 10px;
+        }
+        .account{
+            font-size: 18px;
+        }
+        .info-area{
+            background: #292928;
+            padding: 30px 0;
+            color: #fff;
+            text-align: center;
+            font-size: 14px;
+        }
+        #footer {
+            padding-top: 10%;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="center-block">
+            <div class="no-padding">
+                <div class="mlt-content">
+                    <!-- col-lg-10 col-lg-offset-1 col-lg-offset-right-1 col-offset-1 col-md-offset-1 -->
+                    <div class="col">
+                        <div class="row acount-body">
+                            <div class="col">
+                            </div>
+                            <div class="col-offset-1">
+                                <img src="img/img_avatar.png" alt="Avatar" class="avatar"/>
+                                <p class="account" data-toggle="modal" data-target="#userModal"><%= session.name %></p>
+                                <input type="hidden" id="myUID" value="<%= session.uid %>">
+                                <input type="hidden" id="myEMAIL" value="<%= session.email %>">
+                                <input type="hidden" id="myUID" value="<%= session.name %>">
+                                <i class="icon-logout" onclick="location.href='/logout'"></i>
+                                <!-- <button class="btn" id="refresh" >새로고침</button> -->
+                            </div>
+                        </div>
+
+                        <div class="row row-cols-2" id="dashboard">
+
+
+                           <!--  <div class="col">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">카트라이더 회의방</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">야끼리</h6>
+                                        <p class="card-text">카트라이더 회의, 진우는 반드시 이긴다.</p>
+                                        <button class="btn lt-register-btn " formaction="# ">회의 참여 <i class="icon-right pull-right "></i></button>
+                                        <br>
+                                        <div class="row conference-advanced">
+                                            <div class="col"><button type="button" class="btn btn-link">회의 편집</button></div>
+                                            <div class="col"><button type="button" class="btn btn-link">채팅 참여</button></div>
+                                        </div>
+                                        <br>
+                                    </div>                              
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">카트라이더 회의방</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">야끼리</h6>
+                                        <p class="card-text">테스트 문장입니다.</p>
+                                        <button class="btn lt-register-btn " formaction="# ">회의 참여 <i class="icon-right pull-right "></i></button>
+                                        <br>
+                                        <div class="row conference-advanced">
+                                            <div class="col"><button type="button" class="btn btn-link">채팅 참여</button></div>
+                                        </div>
+                                        <br>
+                                    </div>                              
+                                </div>
+                            </div> -->
+
+                        </div>
+                    </div>
+                    <div class="col" id="footer">
+                        <div class="info-area">
+                            <div class="inner">
+                                <div>
+                                    <p>오류 문의</p> 
+                                    <a href="mailto:pororo@pororo.co.kr" class="f_roboto">pororo@pororo.co.kr</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--Login-->
+            </div>
+            <!--center-block-->
+        </div>
+        <!--container-->
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="newConferenceModal" tabindex="-1" role="dialog" aria-labelledby="newConferenceModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newConferenceModalLabel">회의 편집</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="new-recipient-name" class="col-form-label">회의 이름:</label>
+                <input type="text" class="form-control" id="new-recipient-name">
+              </div>
+              <div class="form-group">
+                <label for="new-recipient-contents" class="col-form-label">회의 내용:</label>
+                <textarea class="form-control" id="new-recipient-contents"></textarea>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="new-recipient-starttime" class="col-form-label">시작 날짜:</label>
+                        <input type="datetime-local" class="form-control" id="new-recipient-starttime">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="new-recipient-endtime" class="col-form-label" disabled=true>종료 날짜:</label>
+                        <input type="datetime-local" class="form-control" id="new-recipient-endtime" disabled="true" value="2099-12-29T12:00">
+                    </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="newm-tags" class="col-form-label">초대 이메일:</label>
+                <input type="text" class="form-control" id="new-tags" />
+              </div> 
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+            <button type="button" class="btn btn-primary" id="new-conference-button">생성</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="editConferenceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">새 회의 생성</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="edit-recipient-name" class="col-form-label">회의 이름:</label>
+                <input type="text" class="form-control" id="edit-recipient-name">
+              </div>
+              <div class="form-group">
+                <label for="edit-message-text" class="col-form-label">회의 내용:</label>
+                <textarea class="form-control" id="edit-message-text"></textarea>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="edit-recipient-time" class="col-form-label">시작 날짜:</label>
+                        <input type="datetime-local" class="form-control" id="edit-recipient-time">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="edit-recipient-time" class="col-form-label" disabled=true>종료 날짜:</label>
+                        <input type="datetime-local" class="form-control" id="edit-recipient-time" disabled="true" value="2099-12-29T12:00">
+                    </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="edit-message-text" class="col-form-label">초대 이메일:</label>
+                <input type="text" class="edit-form-control" id="tags" />
+              </div> 
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">삭제</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+            <button type="button" class="btn btn-primary">생성</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+        <!-- user Modal -->
+    <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="userModalLabel">유저 정보</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="recipient-email" class="col-form-label">이메일 주소:</label>
+                <input type="text" class="form-control" id="recipient-email" disabled="true" value="<%= session.email %>">
+              </div>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">이름(닉네임):</label>
+                <input type="text" class="form-control" id="recipient-name" value="<%= session.name %>">
+              </div>
+              <div class="form-group">
+                <label for="recipient-password" class="col-form-label">비밀번호:</label>
+                <input type="password" class="form-control" id="recipient-password" >
+              </div>
+              <div class="form-group">
+                <label for="recipient-passwordCheck" class="col-form-label">비밀번호 확인:</label>
+                <input type="password" class="form-control" id="recipient-passwordCheck" >
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <!-- TODO  -->
+            <!-- <button type="button" class="btn btn-danger" data-dismiss="modal" id="delete-user-button">회원탈퇴</button> -->
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+            <button type="button" class="btn btn-primary" id="modify-user-button">수정</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="custom/jquery/dist/jquery.min.js "></script>
+    <script src="custom/bootstrap/dist/js/bootstrap.min.js "></script>
+    <script src="custom/libs/mdl/material.min.js "></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js "></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="js/inputTags.jquery.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.2/jquery.validate.min.js "></script>
+    <script src="js/main.js "></script>
+<!--     <script>
+        //Google analytics.
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-79865537-1', 'auto');
+        ga('send', 'pageview');
+    </script> -->
+
+
+</body>
+
+</html>
