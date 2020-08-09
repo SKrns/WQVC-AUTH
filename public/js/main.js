@@ -124,8 +124,8 @@ $(document).ready(function() {
                 let owner_uid = res.owner_uid;
                 let conference_contents = res.conference_contents;
                 let conference_uid = res.conference_uid;
-                let conferenceChat_url = `http://localhost:8000/chat/${conference_uid}_${myNAME}`;
-                let conferenceVideo_url = `https://localhost:8443/index.html?roomName=${conference_uid}&userName=${myNAME}`;
+                let conferenceChat_url = `https://localhost:8081/chat/${conference_uid}_${myNAME}`; //edit
+                let conferenceVideo_url = `https://localhost:8080/index.html?roomName=${conference_uid}&userName=${myNAME}`; //edit
                 let conferenceEditCode = (myUID==owner_uid?`<div class="col"><button type="button" class="btn btn-link" data-toggle="modal" data-target="">회의 편집</button></div>` : '');
                 let code =`
                 <div class="col">

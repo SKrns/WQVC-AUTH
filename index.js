@@ -26,15 +26,17 @@ app.use(session({
 	}
 }))
 app.use(express.json())
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({extended: true})) //true -> false
 
 const user_router = require('./routes/user')(app)
 const conference_router = require('./routes/conference')(app)
 const main_router = require('./routes/main')(app)
 
-
 let server = app.listen(process.env.PORT, () => {
  console.log("Express server has started on port %d", process.env.PORT)
 })
 
-
+// eureka client
+const PORT = 3000;
+const eurekaHelper = require('./eureka-helper');
+eurekaHelper.registerWithEureka('auth-service',PORT);
