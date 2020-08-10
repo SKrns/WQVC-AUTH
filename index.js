@@ -30,7 +30,6 @@ app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(cors());
 
-
 const user_router = require('./routes/user')(app)
 const conference_router = require('./routes/conference')(app)
 const main_router = require('./routes/main')(app)
