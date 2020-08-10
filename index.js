@@ -7,6 +7,7 @@ const cookieSession = require('cookie-session')
 const bodyParser = require('body-parser')
 const passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy
+const cors = require('cors');
 
 let app = express()
 dotenv.config()
@@ -27,6 +28,7 @@ app.use(session({
 }))
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(cors());
 
 const user_router = require('./routes/user')(app)
 const conference_router = require('./routes/conference')(app)
