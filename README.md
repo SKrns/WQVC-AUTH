@@ -13,16 +13,18 @@ cd WQVC-AUTH
 npm install
 ```
 
-`.env`파일을 하나 만들어  `PORT`(3000) 과`CONNECTIONSTRING`(DB URL)을 다음과 같이 설정.
+`.env`파일을 하나 만들어 다음과 같이 설정.
 
 ```
-PORT = 3000
+PORT = 7000
 CONNECTIONSTRING = postgresql://postgres:Dndus243!@101.101.211.230:5432/modo
+HOSTNAME = wqvc-auth
+EUREKA_CLIENT_SERVICEURL_DEFAULTZONE = [유레카서버주소]
 ```
 
 
 
-마지막으로 서버를 실행시키고 다음 링크로 들어간다. `http://slb-4957600.ncloudslb.com/`
+마지막으로 서버를 실행시키고 다음 링크로 들어간다. `http://localhost:7000/`
 
 ```
 node index.js
