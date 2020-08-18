@@ -3,6 +3,24 @@
 WQVC(WebRTC-QUIC Video Conference)의 AUTH Server. 회의 생성, 채팅 참가, 회의 참가가 가능하다.
 
 ## 설치 방법
+### 1) 컨테이너 실행
+
+Dockerfile을 빌드 한다.
+
+```
+docker build -t [생성할 이미지 이름] .
+```
+
+이 후, 생성한 이미지를 실행한다.
+
+```
+docker run --link [유레카 컨테이너 이름] -p 7000:7000 -t [생성한 이미지 이름]
+```
+`http://slb-4957600.ncloudslb.com/`위 주소에 들어간다.
+
+
+### 2) 일반 실행
+
 
 깃 레포와 dependency 설치
 
