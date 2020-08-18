@@ -40,7 +40,7 @@ npm install
 PORT = 7000
 CONNECTIONSTRING = postgresql://postgres:Dndus243!@101.101.211.230:5432/modo
 HOSTNAME = localhost
-EUREKA_CLIENT_SERVICEURL_DEFAULTZONE = [유레카서버주소]
+EUREKA_CLIENT_SERVICEURL_DEFAULTZONE = [유레카서버주소 예: localhost]
 ```
 
 
