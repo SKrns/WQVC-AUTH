@@ -124,8 +124,8 @@ $(document).ready(function() {
                 let owner_uid = res.owner_uid;
                 let conference_contents = res.conference_contents;
                 let conference_uid = res.conference_uid;
-                let conferenceChat_url = `https://localhost:8081/chat/${conference_uid}_${myNAME}`; //edit
-                let conferenceVideo_url = `https://localhost:8080/index.html?roomName=${conference_uid}&userName=${myNAME}`; //edit
+                let conferenceChat_url = `/chat/${conference_uid}_${myNAME}`; //edit
+                let conferenceVideo_url = `https://101.101.211.231:7001/index.html/?roomName=${conference_uid}&userName=${myNAME}`; //edit
                 let conferenceEditCode = (myUID==owner_uid?`<div class="col"><button type="button" class="btn btn-link" data-toggle="modal" data-target="">회의 편집</button></div>` : '');
                 let code =`
                 <div class="col">
@@ -138,13 +138,13 @@ $(document).ready(function() {
                             <br>
                             <div class="row conference-advanced">
                                 ${conferenceEditCode}
-                                <div class="col"><button type="button" class="btn btn-link" onclick="location.href='${conferenceChat_url}'">채팅 참여</button></div>
+                                <div class="col"><button type="button" class="btn btn-link" onclick="window.open('${conferenceChat_url}','채팅','width=430,height=700,location=no,status=no,scrollbars=no');">채팅 참여</button></div>
                             </div>
                             <br>
                         </div>                              
                     </div>
                 </div>`;
-                $('#dashboard').append(code);           
+                $('#dashboard').append(code);
             }
             $('#dashboard').append(newConferenceCode);     
         },

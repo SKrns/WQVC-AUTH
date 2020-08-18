@@ -39,6 +39,5 @@ let server = app.listen(process.env.PORT, () => {
 })
 
 // eureka client
-const PORT = 3000;
 const eurekaHelper = require('./eureka-helper');
-eurekaHelper.registerWithEureka('auth-service',PORT);
+eurekaHelper.registerWithEureka('auth-service',process.env.PORT);
