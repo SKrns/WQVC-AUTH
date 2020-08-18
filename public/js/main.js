@@ -124,8 +124,8 @@ $(document).ready(function() {
                 let owner_uid = res.owner_uid;
                 let conference_contents = res.conference_contents;
                 let conference_uid = res.conference_uid;
-                let conferenceChat_url = 'http://'+window.location.hostname+`/chat/${conference_uid}_${myNAME}`; //edit
-                let conferenceVideo_url = 'https://'+window.location.hostname+`/video/index.html/?roomName=${conference_uid}&userName=${myNAME}`; //edit
+                let conferenceChat_url = 'http://'+window.location.hostname+`:7002/chat/${conference_uid}_${myNAME}`; //edit
+                let conferenceVideo_url = 'https://'+window.location.hostname+`:7001/index.html/?roomName=${conference_uid}&userName=${myNAME}`; //edit
                 let conferenceEditCode = (myUID==owner_uid?`<div class="col"><button type="button" class="btn btn-link" data-toggle="modal" data-target="">회의 편집</button></div>` : '');
                 let code =`
                 <div class="col">
@@ -133,7 +133,7 @@ $(document).ready(function() {
                         <div class="card-body">
                             <h5 class="card-title">${conference_name}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">${owner_name}</h6>
-                            <p class="card-text">${conference_contents}</p>
+                            <p class="card-text">${conference_contents}</p><br>
                             <button class="btn lt-register-btn " onclick="location.href='${conferenceVideo_url}'">회의 참여 <i class="icon-right pull-right "></i></button>
                             <br>
                             <div class="row conference-advanced">

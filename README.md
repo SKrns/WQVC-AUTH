@@ -2,6 +2,9 @@
 
 WQVC(WebRTC-QUIC Video Conference)의 AUTH Server. 회의 생성, 채팅 참가, 회의 참가가 가능하다.
 
+## 사전 설치 요구사항
+위 서비스를 사용하기 전에 `https://github.com/Pororo-droid/WQVC-eurkeaServer`가 필요하다.
+
 ## 설치 방법
 ### 1) 컨테이너 실행
 
@@ -16,7 +19,7 @@ docker build -t [생성할 이미지 이름] .
 ```
 docker run --link [유레카 컨테이너 이름] -p 7000:7000 -t [생성한 이미지 이름]
 ```
-`http://slb-4957600.ncloudslb.com/`위 주소에 들어간다.
+
 
 
 ### 2) 일반 실행
@@ -36,7 +39,7 @@ npm install
 ```
 PORT = 7000
 CONNECTIONSTRING = postgresql://postgres:Dndus243!@101.101.211.230:5432/modo
-HOSTNAME = wqvc-auth
+HOSTNAME = localhost
 EUREKA_CLIENT_SERVICEURL_DEFAULTZONE = [유레카서버주소]
 ```
 
@@ -48,7 +51,7 @@ EUREKA_CLIENT_SERVICEURL_DEFAULTZONE = [유레카서버주소]
 node index.js
 ```
 
-## 사용방법
+## 사용방법 (OIDC)
 ### 회원가입
 
 다음 주소`http://slb-4957600.ncloudslb.com/`로 들어가 이름, 이메일 주소, 비밀번호와 약관동의를 누르고 계정 만들기를 누른다.
